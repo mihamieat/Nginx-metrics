@@ -28,7 +28,7 @@ services:
     container_name: prometheus-nginx-exporter
     restart: always
     command:
-      - -nginx.scrape-uri=http://nginx:8080/stub_status
+      - -nginx.scrape-uri=http://nginx:80/stub_status
     expose: 
       - 9113
     ports:
