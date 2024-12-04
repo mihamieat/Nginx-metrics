@@ -13,6 +13,7 @@ services:
       user: root
       volumes:
         - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+        - ./prometheus/first_rules.yml:/etc/prometheus/first_rules.yml
         - ./prometheus/data:/prometheus
       container_name: prometheus
       restart: always
@@ -58,6 +59,22 @@ services:
       - 9100
     ports:
       - 9100
+
+  alertmanager:
+      image: prom/alertmanager:latest
+      restart: unless-stopped
+      expose:
+        - 9093
+      ports:
+        - "9093:9093"
+      volumes:
+        - "./prometheus/alertmanager:/config"
+        - alertmanager-data:/data
+      command: --config.file=/config/alertmanager.yml --log.level=debug
+
+volumes:
+
+  alertmanager-data:
 
 networks:
     localhost:

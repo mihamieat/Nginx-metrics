@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-mkdir -p prometheus/data
+mkdir -p prometheus/{data,alermanager/data}
