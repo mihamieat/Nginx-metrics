@@ -57,7 +57,7 @@ services:
     expose:
       - 9100
     ports:
-      - 9100
+      - 9100:9100
 
 networks:
     localhost:
